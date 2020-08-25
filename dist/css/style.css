@@ -108,32 +108,32 @@ li {
   color: #f71012;
 }
 
-.game-menu {
+.game-menu-upper {
   display: flex;
   justify-content: center;
   padding: 4.5rem 0;
 }
 
-.game-menu .menu-tic,
-.game-menu .menu-tac {
+.game-menu-upper .menu-tic,
+.game-menu-upper .menu-tac {
   font-size: 3.5rem;
   margin-right: 2rem;
 }
 
-.game-menu .menu-tic {
+.game-menu-upper .menu-tic {
   color: #007bff;
 }
 
-.game-menu .menu-tic.menu-turn-tick {
+.game-menu-upper .menu-tic.menu-turn-tick {
   margin-right: 1.5rem;
 }
 
-.game-menu .menu-tac {
+.game-menu-upper .menu-tac {
   color: #f71012;
 }
 
-.game-menu .tic-side,
-.game-menu .tac-side {
+.game-menu-upper .tic-side,
+.game-menu-upper .tac-side {
   background-color: white;
   font-size: 2.2rem;
   border-radius: 5px;
@@ -142,8 +142,8 @@ li {
   position: relative;
 }
 
-.game-menu .tic-side .winning-tag,
-.game-menu .tac-side .winning-tag {
+.game-menu-upper .tic-side .winning-tag,
+.game-menu-upper .tac-side .winning-tag {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -154,38 +154,38 @@ li {
   z-index: -1;
 }
 
-.game-menu .tic-side .winning-tag.show,
-.game-menu .tac-side .winning-tag.show {
+.game-menu-upper .tic-side .winning-tag.show,
+.game-menu-upper .tac-side .winning-tag.show {
   top: -3.5rem;
 }
 
-.game-menu .tic-side.turn-player {
+.game-menu-upper .tic-side.turn-player {
   color: white;
   background-color: #007bff;
 }
 
-.game-menu .tic-side.turn-player .menu-tic {
+.game-menu-upper .tic-side.turn-player .menu-tic {
   color: white;
 }
 
-.game-menu .tic-side .winning-tag {
+.game-menu-upper .tic-side .winning-tag {
   background-color: #007bff;
 }
 
-.game-menu .tac-side .winning-tag {
+.game-menu-upper .tac-side .winning-tag {
   background-color: #f71012;
 }
 
-.game-menu .tac-side.turn-player {
+.game-menu-upper .tac-side.turn-player {
   color: white;
   background-color: #f71012;
 }
 
-.game-menu .tac-side.turn-player .menu-tac {
+.game-menu-upper .tac-side.turn-player .menu-tac {
   color: white;
 }
 
-.game-menu .turn {
+.game-menu-upper .turn {
   font-size: 2.2rem;
   margin: 0 5rem 0 5rem;
   display: flex;
@@ -195,19 +195,19 @@ li {
   position: relative;
 }
 
-.game-menu .turn .turn-shape {
+.game-menu-upper .turn .turn-shape {
   font-size: 3.5rem;
 }
 
-.game-menu .turn .turn-shape.turn-shape-x {
+.game-menu-upper .turn .turn-shape.turn-shape-x {
   color: #007bff;
 }
 
-.game-menu .turn .turn-shape.turn-shape-o {
+.game-menu-upper .turn .turn-shape.turn-shape-o {
   color: #f71012;
 }
 
-.game-menu .turn .draw-tag {
+.game-menu-upper .turn .draw-tag {
   position: absolute;
   background-color: black;
   font-size: 1.8rem;
@@ -219,7 +219,7 @@ li {
   visibility: hidden;
 }
 
-.game-menu .turn .draw-tag.show {
+.game-menu-upper .turn .draw-tag.show {
   visibility: visible;
 }
 
@@ -335,26 +335,52 @@ li {
   }
 }
 
-.reset-button {
+.game-menu-lower {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-menu-lower button {
   border: none;
   outline: none;
   padding: 0.7rem 1.3rem;
   font-size: 1.55rem;
   text-transform: uppercase;
   border-radius: 5px;
-  background-color: red;
-  color: white;
-  display: block;
-  margin: auto;
-  letter-spacing: 3px;
-  font-weight: 700;
   cursor: pointer;
+  font-size: 1.8rem;
+  font-weight: 500;
 }
 
-.reset-button:hover {
+.game-menu-lower .mode-select {
+  text-transform: capitalize;
+}
+
+.game-menu-lower .mode-select.mode-select-1v1 {
+  margin-right: 2.5rem;
+}
+
+.game-menu-lower .mode-select.selected {
+  background-color: #e14113;
+  color: white;
+}
+
+.game-menu-lower .mode-select.mode-select-youvcomputer {
+  cursor: not-allowed;
+}
+
+.game-menu-lower .reset-button {
+  background-color: red;
+  color: white;
+  letter-spacing: 3px;
+  margin-left: 2.5rem;
+}
+
+.game-menu-lower .reset-button:hover {
   background-color: #ff0f0f;
 }
 
-.reset-button:active {
+.game-menu-lower .reset-button:active {
   background-color: #cc0000;
 }

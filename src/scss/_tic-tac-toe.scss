@@ -21,7 +21,7 @@
 	}
 }
 
-.game-menu {
+.game-menu-upper {
 	display: flex;
 	justify-content: center;
 	padding: 4.5rem 0;
@@ -260,26 +260,52 @@
 	}
 }
 
-.reset-button {
-	border: none;
-	outline: none;
-	padding: 0.7rem 1.3rem;
-	font-size: 1.55rem;
-	text-transform: uppercase;
-	border-radius: 5px;
-	background-color: red;
-	color: white;
-	display: block;
-	margin: auto;
-	letter-spacing: 3px;
-	font-weight: 700;
-	cursor: pointer;
+.game-menu-lower {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
-	&:hover {
-		background-color: lighten(red, 3%);
+	button {
+		border: none;
+		outline: none;
+		padding: 0.7rem 1.3rem;
+		font-size: 1.55rem;
+		text-transform: uppercase;
+		border-radius: 5px;
+		cursor: pointer;
+		font-size: 1.8rem;
+		font-weight: 500;
 	}
 
-	&:active {
-		background-color: darken(red, 10%);
+	.mode-select {
+		text-transform: capitalize;
+
+		&.mode-select-1v1 {
+			margin-right: 2.5rem;
+		}
+
+		&.selected {
+			background-color: #e14113;
+			color: white;
+		}
+
+		&.mode-select-youvcomputer {
+			cursor: not-allowed;
+		}
+	}
+
+	.reset-button {
+		background-color: red;
+		color: white;
+		letter-spacing: 3px;
+		margin-left: 2.5rem;
+
+		&:hover {
+			background-color: lighten(red, 3%);
+		}
+
+		&:active {
+			background-color: darken(red, 10%);
+		}
 	}
 }
