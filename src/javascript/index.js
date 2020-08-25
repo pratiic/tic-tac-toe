@@ -14,6 +14,8 @@ let shapeColor = {
 
 let allSpots = document.querySelectorAll(".spot");
 
+let mode = "1v1";
+
 let markedSpots = 0;
 let recentSpot;
 let recentShape;
@@ -115,6 +117,40 @@ let winAnimation = ` winningAnimation 450ms ease-in 3 `;
 let diagRelElements = ["spot1", "spot3", "spot7", "spot9", "spot5"];
 let centerElement = ["spot5"];
 
+setMode();
+
+function setMode() {
+	if (mode === "1v1") {
+		elements.modeButtonOne.classList.add("selected");
+		elements.modeButtonTwo.classList.remove("selected");
+
+		hidePlayers();
+	} else if (mode === "youvcomputer") {
+		elements.modeButtonTwo.classList.add("selected");
+		elements.modeButtonOne.classList.remove("selected");
+
+		//this shows which side is user and which side is computer
+		showPlayers();
+
+		//the user is given the first move
+		updateTurn("x");
+
+		//side is set to user
+		changeSide("x");
+	}
+}
+
+elements.lowerGameMenu.addEventListener("click", (event) => {
+	if (event.target.classList.contains("mode-select")) {
+		mode = event.target.getAttribute("mode");
+		//this sets the mode of the game
+		setMode();
+
+		//this hard resets the game
+		hardResetGame();
+	}
+});
+
 setTurn();
 
 elements.gameBoard.addEventListener("click", (event) => {
@@ -128,14 +164,12 @@ elements.gameBoard.addEventListener("click", (event) => {
 		//to mark the drawn spot
 		markSpot(event.target);
 
-		//to update the turn
-		updateTurn();
-
-		//to change the side after each turn
-		changeSide();
-
 		//to see if the game is over
 		checkIfOver();
+
+		if (mode === "youvcomputer") {
+			//here we assume that x is user and o is computer
+		}
 	}
 });
 
@@ -149,13 +183,18 @@ function markSpot(spot) {
 	recentShape = spot.innerText;
 }
 
-function updateTurn() {
-	if (turn === "x") {
-		turn = "o";
+function updateTurn(turnPlayer) {
+	if (turnPlayer) {
+		turn = turnPlayer;
 		setTurn();
 	} else {
-		turn = "x";
-		setTurn();
+		if (turn === "x") {
+			turn = "o";
+			setTurn();
+		} else {
+			turn = "x";
+			setTurn();
+		}
 	}
 }
 
@@ -190,6 +229,11 @@ function checkIfOver() {
 
 		gameOver("win", winningShape);
 	} else {
+		//to update the turn
+		updateTurn();
+
+		//to change the side after each turn
+		changeSide();
 		markedSpots++;
 		if (markedSpots === 9 && !over) {
 			gameOver("draw");
@@ -416,12 +460,23 @@ function resetGame() {
 }
 
 elements.resetButton.addEventListener("click", () => {
+	hardResetGame();
+});
+
+function hardResetGame() {
 	updateScore(0, 0);
 	resetBoard(0);
 	resetGame();
-});
+}
 
-function resetScore() {
-	xScore = 0;
-	yScore = 0;
+function showPlayers() {
+	elements.playerTags.forEach((playerTag) => {
+		playerTag.classList.add("show");
+	});
+}
+
+function hidePlayers() {
+	elements.playerTags.forEach((playerTag) => {
+		playerTag.classList.remove("show");
+	});
 }

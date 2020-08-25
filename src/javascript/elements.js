@@ -17,4 +17,8 @@ export let elements = {
 	spot9: document.querySelector("#spot9"),
 	result: document.querySelector(".result"),
 	resetButton: document.querySelector(".reset-button"),
+	modeButtonOne: document.querySelector(".mode-select-1v1"),
+	modeButtonTwo: document.querySelector(".mode-select-youvcomputer"),
+	lowerGameMenu: document.querySelector(".game-menu-lower"),
+	playerTags: document.querySelectorAll(".player-tag"),
 };

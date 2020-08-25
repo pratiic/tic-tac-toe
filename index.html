@@ -43,19 +43,21 @@
 
 		<div class="game-menu-upper">
 			<div class="tic-side turn-player">
-				<div class="winning-tag tic-winning-tag">won</div>
+				<div class="tag winning-tag tic-winning-tag">won</div>
+				<div class="tag player-tag user-tag">you</div>
 				<span class="menu-tic">x</span> score -
 				<span class="tic-score">0</span>
 			</div>
 
 			<div class="turn">
-				<div class="draw-tag">draw</div>
+				<div class="tag draw-tag">draw</div>
 				TURN
 				<span class="turn-shape"></span>
 			</div>
 
 			<div class="tac-side">
-				<div class="winning-tag tac-winning-tag">won</div>
+				<div class="tag winning-tag tac-winning-tag">won</div>
+				<div class="tag player-tag computer-tag">me</div>
 				<span class="menu-tac">o</span> score -
 				<span class="tac-score">0</span>
 			</div>
@@ -74,8 +76,13 @@
 		</div>
 
 		<div class="game-menu-lower">
-			<button class="mode-select mode-select-1v1 selected">1 v 1</button>
-			<button class="mode-select mode-select-youvcomputer">
+			<button class="mode-select mode-select-1v1 selected" mode="1v1">
+				1 v 1
+			</button>
+			<button
+				class="mode-select mode-select-youvcomputer"
+				mode="youvcomputer"
+			>
 				you v computer
 			</button>
 

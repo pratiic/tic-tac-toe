@@ -166,16 +166,42 @@ li {
   position: relative;
 }
 
-.game-menu-upper .tic-side .winning-tag,
-.game-menu-upper .tac-side .winning-tag {
+.game-menu-upper .tic-side .tag,
+.game-menu-upper .tac-side .tag {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  top: 0;
   color: white;
   padding: 0.5rem 1.75rem;
   border-radius: 5px;
   z-index: -1;
+}
+
+.game-menu-upper .tic-side .player-tag,
+.game-menu-upper .tac-side .player-tag {
+  bottom: 0;
+  padding: 0.2rem 1rem;
+  font-size: 1.55rem;
+}
+
+.game-menu-upper .tic-side .player-tag.user-tag,
+.game-menu-upper .tac-side .player-tag.user-tag {
+  background-color: #007bff;
+}
+
+.game-menu-upper .tic-side .player-tag.computer-tag,
+.game-menu-upper .tac-side .player-tag.computer-tag {
+  background-color: #f71012;
+}
+
+.game-menu-upper .tic-side .player-tag.show,
+.game-menu-upper .tac-side .player-tag.show {
+  bottom: -2.2rem;
+}
+
+.game-menu-upper .tic-side .winning-tag,
+.game-menu-upper .tac-side .winning-tag {
+  top: 0;
 }
 
 .game-menu-upper .tic-side .winning-tag.show,
@@ -388,10 +414,6 @@ li {
 .game-menu-lower .mode-select.selected {
   background-color: #e14113;
   color: white;
-}
-
-.game-menu-lower .mode-select.mode-select-youvcomputer {
-  cursor: not-allowed;
 }
 
 .game-menu-lower .reset-button {
