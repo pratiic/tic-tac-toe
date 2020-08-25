@@ -14,7 +14,7 @@ let shapeColor = {
 
 let allSpots = document.querySelectorAll(".spot");
 
-let mode = "1v1";
+let mode = "youvcomputer";
 
 let markedSpots = 0;
 let recentSpot;
@@ -112,6 +112,8 @@ let winningSpots = [];
 let strikeStyle;
 let winningShape;
 
+let madeMoves = [];
+
 let winAnimation = ` winningAnimation 450ms ease-in 3 `;
 
 let diagRelElements = ["spot1", "spot3", "spot7", "spot9", "spot5"];
@@ -164,11 +166,19 @@ elements.gameBoard.addEventListener("click", (event) => {
 		//to mark the drawn spot
 		markSpot(event.target);
 
+		madeMoves.push(event.target.id);
+
 		//to see if the game is over
 		checkIfOver();
 
 		if (mode === "youvcomputer") {
-			//here we assume that x is user and o is computer
+			//this makes the computer to make its move
+			let move = letMePlay();
+			setTimeout(function () {
+				drawShape(document.getElementById(move));
+				markSpot(document.getElementById(move));
+				checkIfOver();
+			}, 450);
 		}
 	}
 });
@@ -375,6 +385,12 @@ function gameOver(message, winningShape) {
 
 		//to show the result
 		showResult("draw");
+
+		if (mode === "youvcomputer") {
+			turn = "x";
+			setTurn();
+			changeSide(turn);
+		}
 	}
 
 	//to reset the board after the game is over
@@ -479,4 +495,127 @@ function hidePlayers() {
 	elements.playerTags.forEach((playerTag) => {
 		playerTag.classList.remove("show");
 	});
+}
+
+function letMePlay() {
+	if (
+		document
+			.getElementById(relations[recentSpot].nx)
+			.classList.contains("marked") &&
+		document.getElementById(relations[recentSpot].nx).innerText ===
+			recentShape
+	) {
+		if (
+			document.getElementById(relations[recentSpot].nnx).innerText !== "o"
+		) {
+			return relations[recentSpot].nnx;
+		}
+	} else if (
+		document
+			.getElementById(relations[recentSpot].nnx)
+			.classList.contains("marked") &&
+		document.getElementById(relations[recentSpot].nnx).innerText ===
+			recentShape
+	) {
+		if (
+			document.getElementById(relations[recentSpot].nx).innerText !== "o"
+		) {
+			return relations[recentSpot].nx;
+		}
+	} else if (
+		document
+			.getElementById(relations[recentSpot].ny)
+			.classList.contains("marked") &&
+		document.getElementById(relations[recentSpot].ny).innerText ===
+			recentShape
+	) {
+		if (
+			document.getElementById(relations[recentSpot].nny).innerText !== "o"
+		) {
+			return relations[recentSpot].nny;
+		}
+	} else if (
+		document
+			.getElementById(relations[recentSpot].nny)
+			.classList.contains("marked") &&
+		document.getElementById(relations[recentSpot].nny).innerText ===
+			recentShape
+	) {
+		if (
+			document.getElementById(relations[recentSpot].ny).innerText !== "o"
+		) {
+			return relations[recentSpot].ny;
+		}
+	}
+
+	if (diagRelElements.indexOf(recentSpot) > -1) {
+		if (
+			document
+				.getElementById(relations[recentSpot].nxy)
+				.classList.contains("marked") &&
+			document.getElementById(relations[recentSpot].nxy).innerText ===
+				recentShape
+		) {
+			if (
+				document.getElementById(relations[recentSpot].nnxy)
+					.innerText !== "o"
+			) {
+				return relations[recentSpot].nnxy;
+			}
+		} else if (
+			document
+				.getElementById(relations[recentSpot].nnxy)
+				.classList.contains("marked") &&
+			document.getElementById(relations[recentSpot].nnxy).innerText ===
+				recentShape
+		) {
+			if (
+				document.getElementById(relations[recentSpot].nxy).innerText !==
+				"o"
+			) {
+				return relations[recentSpot].nxy;
+			}
+		}
+	}
+
+	if (centerElement.indexOf(recentSpot) > -1) {
+		if (
+			document
+				.getElementById(relations[recentSpot].nxy2)
+				.classList.contains("marked") &&
+			document.getElementById(relations[recentSpot].nxy2).innerText ===
+				recentShape
+		) {
+			if (
+				document.getElementById(relations[recentSpot].nnxy2)
+					.innerText !== "o"
+			) {
+				return relations[recentSpot].nnxy2;
+			}
+		} else if (
+			document
+				.getElementById(relations[recentSpot].nnxy2)
+				.classList.contains("marked") &&
+			document.getElementById(relations[recentSpot].nnxy2).innerText ===
+				recentShape
+		) {
+			if (
+				document.getElementById(relations[recentSpot].nxy2)
+					.innerText !== "o"
+			) {
+				return relations[recentSpot].nxy2;
+			}
+		}
+	}
+
+	return makeRandomMove();
+}
+
+function makeRandomMove() {
+	let move = document.getElementById(`spot${Math.ceil(Math.random() * 8)}`);
+	if (!move.classList.contains("marked")) {
+		return move.id;
+	} else {
+		return makeRandomMove();
+	}
 }
