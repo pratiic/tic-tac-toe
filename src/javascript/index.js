@@ -334,7 +334,7 @@ function gameOver(message, winningShape) {
 	}
 
 	//to reset the board after the game is over
-	resetBoard();
+	resetBoard(2300);
 
 	//to reset the whole game and a few variables
 	resetGame();
@@ -389,7 +389,7 @@ function markAllSpots() {
 	});
 }
 
-function resetBoard() {
+function resetBoard(timer) {
 	setTimeout(function () {
 		allSpots.forEach((spot) => {
 			spot.innerText = null;
@@ -398,7 +398,7 @@ function resetBoard() {
 
 		//to hide the result
 		hideResult();
-	}, 2300);
+	}, timer);
 }
 
 function hideResult() {
@@ -413,4 +413,15 @@ function resetGame() {
 	winningShape = null;
 	recentShape = null;
 	over = false;
+}
+
+elements.resetButton.addEventListener("click", () => {
+	updateScore(0, 0);
+	resetBoard(0);
+	resetGame();
+});
+
+function resetScore() {
+	xScore = 0;
+	yScore = 0;
 }

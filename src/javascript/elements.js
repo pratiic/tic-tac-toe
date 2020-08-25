@@ -16,4 +16,5 @@ export let elements = {
 	spot8: document.querySelector("#spot8"),
 	spot9: document.querySelector("#spot9"),
 	result: document.querySelector(".result"),
+	resetButton: document.querySelector(".reset-button"),
 };
