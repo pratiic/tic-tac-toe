@@ -10,6 +10,30 @@ html {
   font-size: 62.5%;
 }
 
+@media screen and (max-width: 750px) {
+  html {
+    font-size: 57.5%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  html {
+    font-size: 51%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  html {
+    font-size: 44%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  html {
+    font-size: 42%;
+  }
+}
+
 body {
   font-family: "Open Sans", sans-serif;
   overflow-x: hidden;
