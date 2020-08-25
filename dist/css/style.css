@@ -1,0 +1,335 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  overflow-x: hidden;
+  font-size: 1.75rem;
+  background-color: #262632;
+  color: white;
+  perspective: 100rem;
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+}
+
+li {
+  list-style-type: none;
+}
+
+.p-1 {
+  padding: 1rem;
+}
+
+.p-2 {
+  padding: 2rem;
+}
+
+.p-3 {
+  padding: 3rem;
+}
+
+.mb-1 {
+  margin-bottom: 1rem;
+}
+
+.mb-2 {
+  margin-bottom: 2rem;
+}
+
+.mb-3 {
+  margin-bottom: 3rem;
+}
+
+.mb-4 {
+  margin-bottom: 4rem;
+}
+
+.mb-5 {
+  margin-bottom: 5rem;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-large {
+  font-size: 4rem;
+}
+
+.text-medium {
+  font-size: 2.5rem;
+}
+
+.text-small {
+  font-size: 1.75rem;
+}
+
+.game-heading {
+  font-size: 4.5rem;
+  text-align: center;
+  font-family: "Source Code Pro", monospace;
+  letter-spacing: 4px;
+  font-weight: 400;
+  margin-bottom: 0;
+}
+
+.game-heading .heading-tic,
+.game-heading .heading-tac {
+  font-size: 7rem;
+  font-weight: 300;
+}
+
+.game-heading .heading-tic {
+  color: #007bff;
+}
+
+.game-heading .heading-tac {
+  color: #f71012;
+}
+
+.game-menu {
+  display: flex;
+  justify-content: center;
+  padding: 4.5rem 0;
+}
+
+.game-menu .menu-tic,
+.game-menu .menu-tac {
+  font-size: 3.5rem;
+  margin-right: 2rem;
+}
+
+.game-menu .menu-tic {
+  color: #007bff;
+}
+
+.game-menu .menu-tic.menu-turn-tick {
+  margin-right: 1.5rem;
+}
+
+.game-menu .menu-tac {
+  color: #f71012;
+}
+
+.game-menu .tic-side,
+.game-menu .tac-side {
+  background-color: white;
+  font-size: 2.2rem;
+  border-radius: 5px;
+  padding: 1.2rem;
+  color: #262632;
+  position: relative;
+}
+
+.game-menu .tic-side .winning-tag,
+.game-menu .tac-side .winning-tag {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  color: white;
+  padding: 0.5rem 1.75rem;
+  border-radius: 5px;
+  z-index: -1;
+}
+
+.game-menu .tic-side .winning-tag.show,
+.game-menu .tac-side .winning-tag.show {
+  top: -3.5rem;
+}
+
+.game-menu .tic-side.turn-player {
+  color: white;
+  background-color: #007bff;
+}
+
+.game-menu .tic-side.turn-player .menu-tic {
+  color: white;
+}
+
+.game-menu .tic-side .winning-tag {
+  background-color: #007bff;
+}
+
+.game-menu .tac-side .winning-tag {
+  background-color: #f71012;
+}
+
+.game-menu .tac-side.turn-player {
+  color: white;
+  background-color: #f71012;
+}
+
+.game-menu .tac-side.turn-player .menu-tac {
+  color: white;
+}
+
+.game-menu .turn {
+  font-size: 2.2rem;
+  margin: 0 5rem 0 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.game-menu .turn .turn-shape {
+  font-size: 3.5rem;
+}
+
+.game-menu .turn .turn-shape.turn-shape-x {
+  color: #007bff;
+}
+
+.game-menu .turn .turn-shape.turn-shape-o {
+  color: #f71012;
+}
+
+.game-menu .turn .draw-tag {
+  position: absolute;
+  background-color: black;
+  font-size: 1.8rem;
+  padding: 0.3rem 1.3rem;
+  border-radius: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -4.5rem;
+  visibility: hidden;
+}
+
+.game-menu .turn .draw-tag.show {
+  visibility: visible;
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(3, 10rem);
+  grid-template-rows: repeat(3, 10rem);
+  justify-content: center;
+  transition: transform 350ms ease-in;
+  backface-visibility: hidden;
+}
+
+.game-board .spot {
+  border: 2px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.game-board .spot.horizontal::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  left: 0;
+  top: 55%;
+  transform: translateY(-50%);
+  background-color: white;
+}
+
+.game-board .spot.vertical::after {
+  content: "";
+  position: absolute;
+  width: 3px;
+  height: 100%;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  background-color: white;
+}
+
+.game-board .spot.diagonalOne::after {
+  content: "";
+  position: absolute;
+  width: 150%;
+  height: 3px;
+  left: 0;
+  top: 0;
+  transform: rotate(45deg) translateY(5rem) translateX(1rem);
+  background-color: white;
+}
+
+.game-board .spot.diagonalTwo::after {
+  content: "";
+  position: absolute;
+  width: 150%;
+  height: 3px;
+  left: 0;
+  top: 0;
+  transform: translateY(5rem) translateX(1rem);
+  background-color: white;
+}
+
+.game-board .spot-top {
+  border-top: none;
+}
+
+.game-board .spot-bottom {
+  border-bottom: none;
+}
+
+.game-board .spot-side-left {
+  border-left: none;
+}
+
+.game-board .spot-side-right {
+  border-right: none;
+}
+
+.game-board .shape-gameboard {
+  font-size: 4.5rem;
+}
+
+.game-board .shape-gameboard-x {
+  color: #007bff;
+}
+
+.game-board .shape-gameboard-o {
+  color: #f71012;
+}
+
+.result {
+  display: none;
+  margin: 3rem 0 0 0;
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+.result.show {
+  display: block;
+}
+
+@keyframes winningAnimation {
+  0% {
+    transform: scale(1);
+    text-shadow: none;
+  }
+  100% {
+    transform: scale(1.3);
+    text-shadow: 0 0 1.5rem currentColor;
+  }
+}

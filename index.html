@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+
+		<link
+			href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap"
+			rel="stylesheet"
+		/>
+
+		<link
+			href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap"
+			rel="stylesheet"
+		/>
+
+		<link
+			href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400;500;700&display=swap"
+			rel="stylesheet"
+		/>
+
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+			integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ="
+			crossorigin="anonymous"
+		/>
+
+		<!-- <link
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+			crossorigin="anonymous"
+		/> -->
+		<link rel="stylesheet" href="dist/css/style.css" />
+	</head>
+	<body>
+		<h1 class="game-heading">
+			tic <span class="heading-tic">x</span> tac
+			<span class="heading-tac">o</span> toe
+		</h1>
+
+		<div class="game-menu">
+			<div class="tic-side turn-player">
+				<div class="winning-tag tic-winning-tag">won</div>
+				<span class="menu-tic">x</span> score -
+				<span class="tic-score">0</span>
+			</div>
+
+			<div class="turn">
+				<div class="draw-tag">draw</div>
+				TURN
+				<span class="turn-shape"></span>
+			</div>
+
+			<div class="tac-side">
+				<div class="winning-tag tac-winning-tag">won</div>
+				<span class="menu-tac">o</span> score -
+				<span class="tac-score">0</span>
+			</div>
+		</div>
+
+		<div class="game-board">
+			<div class="spot spot-top spot-side-left" id="spot1"></div>
+			<div class="spot spot-top" id="spot2"></div>
+			<div class="spot spot-top spot-side-right" id="spot3"></div>
+			<div class="spot spot spot-side-left" id="spot4"></div>
+			<div class="spot" id="spot5"></div>
+			<div class="spot spot-side-right" id="spot6"></div>
+			<div class="spot spot-bottom spot-side-left" id="spot7"></div>
+			<div class="spot spot-bottom" id="spot8"></div>
+			<div class="spot spot-bottom spot-side-right" id="spot9"></div>
+		</div>
+
+		<div class="result">
+			<span class="winning-shape"></span>
+			<span class="winning-message"></span>
+		</div>
+
+		<script type="module" src="src/javascript/index.js"></script>
+	</body>
+</html>

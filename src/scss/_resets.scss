@@ -1,0 +1,30 @@
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	font-family: $font-stack-primary;
+	overflow-x: hidden;
+	font-size: 1.75rem;
+	background-color: $dark-blue;
+	color: white;
+	perspective: 100rem;
+	position: relative;
+}
+
+a {
+	text-decoration: none;
+	display: inline-block;
+}
+
+li {
+	list-style-type: none;
+}
